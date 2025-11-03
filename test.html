@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>fastinput</title>
+	<link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+
+* {
+	font-family: arial;
+}
+
+#dropdowncontainer {
+	display: none;
+	position: fixed;
+	top: 1vh;
+	right: 1vw;
+	height: 80vh;
+	width: 50vw;
+	//background: cyan;
+	overflow: auto;
+}
+
+/* dropdown */
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  //display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+/* end dropdown */
+
+
+
+.highlightgray {
+background: silver;	
+}
+
+.position {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    z-index: 2;
+    display: none;
+}
+
+.container {
+    width: 220px;
+    height: auto;
+    border: 1px solid black;
+    background: rgb(245, 243, 243);
+}
+
+.container p {
+    height: 30px;
+    font-size: 18px;
+    font-family: arial;
+    width: 99%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-itemelement.s: center;
+    background: rgb(245, 243, 243);
+    color: black;
+    transition: 0.2s;
+}
+
+.container p:hover {
+    background: lightblue;
+}
+
+td {
+    font-family: arial;
+    font-size: 20px;
+	//padding: 1vh;
+}
+
+td:hover {
+    background: lightblue;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+
+.teegroup {
+	//background: gray;
+	border: 2px solid black;
+	border-radius: 5px;
+	width: 50%;
+	margin: 1vh;
+}
+
+.tee {
+	padding: 1vh;
+}
+
+.head {
+	background: gray;
+	border: 2px solid black;
+	border-radius: 5px;
+	width: calc(50% - 2vh);
+	margin: 1vh;
+	color: white;
+	padding:1vh;
+}
+
+div#msgbox {
+    position:absolute;
+	text-align: center;
+    display:none;
+    top:10%;
+    left:10%;
+    width:60%; 
+    //margin-left:-250px;
+    border: 2px solid black;
+	border-radius: 5px; 
+    padding:1vh;
+    background-color:white;
+}
+
+#answeryes {
+	text-align: center;
+	border: 2px solid black;
+	border-radius: 5px;
+	padding: 3vh;
+	margin: 3vh;
+	float: left;
+	width: 20%;
+}
+
+#answerno {
+	text-align: center;
+	border: 2px solid black;
+	border-radius: 5px;
+	padding: 3vh;
+	margin: 3vh;
+float: right;
+	width: 20%;
+}
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+ <div id="dropdowncontainer">
+ 
+<div class="dropdown">
+
+
+  <div id="myDropdown" class="dropdown-content">
+    <!-- populated by javascript -->
+	
+	
+	
+	
+  </div>
+</div>
+</div>
+
+
+
+
+<div id="teecontainer"></div>
+<!--
+<div id="a0" oncontextmenu="selected(this.id)">aaaaaaaaaa</div>
+<div id="a1" oncontextmenu="selected(this.id)">bbbbbbbbbb</div>
+<div id="a2" oncontextmenu="selected(this.id)">cccccccccc</div>
+<div id="a3" oncontextmenu="selected(this.id)">dddddddddd</div>
+<div id="a4" oncontextmenu="selected(this.id)">eeeeeeeeee</div>
+<div id="a5" oncontextmenu="selected(this.id)">ffffffffff</div>
+-->
+
+
+
+<script type="text/javascript">
+
+// set up variables etc.
+
+var selectedteeslotplayer = "";
+var selectedteeslot = "";
+var oldteeslotvalue = "";
+var selectedteeslot = "a1";
+var dropdownselectedplayer = "----------";
+var currentteeslotid = "";
+var currentdropdownname = "";
+playersarray = [
+"Bryan",
+"Dale",
+"Dean",
+"Graham",
+
+"John",
+"Peter",
+"Richard",
+"Robert",
+
+"SteveA",
+"SteveW",
+"Bryan",
+"Dale",
+
+"Dean",
+"Graham",
+"John",
+"Peter",
+
+"Richard",
+"Robert",
+
+]
+
+
+// add empty values to array to make multiples of 4
+if (playersarray.length%4 !== 0) {
+	playersarray.push("----------")
+	console.log("1 added")
+}
+if (playersarray.length%4 !== 0) {
+	playersarray.push("----------")
+	console.log("1 added")
+}
+if (playersarray.length%4 !== 0) {
+	playersarray.push("----------")
+	console.log("1 added")
+}
+
+
+ 
+
+
+
+// build a set of 4-ball tee times
+var t = 0;
+var teecontainer = document.getElementById("teecontainer")
+for (let j = 0; j < playersarray.length; j+=4) {
+   // create a 4-ball group
+   console.log("j = " + j)
+   t++
+   let outerbox = document.createElement("div");
+   outerbox.id= "aa" + t;
+   outerbox.className = "teegroup";
+   
+   //console.log(teecontainer.innerHTML)
+ 
+ 
+ 
+ 
+let heading = document.createElement("div");
+heading.id= "h" + j;
+heading.className = "head";
+heading.innerText = "tee " + t;
+teecontainer.appendChild(heading)
+
+
+//console.log(teecontainer.innerHTML)
+
+  
+// then add 4 players
+let box1 = document.createElement("div");
+   box1.id= "a" + j;
+   box1.className = "tee";
+   //box.style.setProperty("--i", i);  
+   box1.setAttribute( "onclick", "javascript: selected(this.id);" );
+   box1.innerText = "----------"
+   outerbox.appendChild(box1);
+
+let box2 = document.createElement("div");
+   box2.id= "a" + (j+1);
+   box2.className = "tee";
+   //box.style.setProperty("--i", i);  
+   box2.setAttribute( "onclick", "javascript: selected(this.id);" );
+   box2.innerText = "----------"
+   outerbox.appendChild(box2);
+
+let box3 = document.createElement("div");
+   box3.id= "a" + (j+2);
+   box3.className = "tee";
+   //box.style.setProperty("--i", i);  
+   box3.setAttribute( "onclick", "javascript: selected(this.id);" );
+   box3.innerText = "----------"
+   outerbox.appendChild(box3);
+
+let box4 = document.createElement("div");
+   box4.id= "a" + (j+3);
+   box4.className = "tee";
+   //box.style.setProperty("--i", i);  
+   box4.setAttribute( "onclick", "javascript: selected(this.id);" );
+   box4.innerText = "----------"
+   outerbox.appendChild(box4);
+
+teecontainer.appendChild(outerbox);
+
+var arrOptions=[];
+arrOptions = [
+"John",
+"Paul",
+"George",
+"Ringo",
+"Bryan",
+"Dale",
+"Dean",
+"Johnny",
+"James",
+"Stephen",
+"Bob",
+"peter",
+"Graham"
+];
+
+console.log(arrOptions.length)
+
+// create dropdown
+var select = document.getElementById("myDropdown");
+select.innerHTML = "";
+// this is what is created
+//<a id="myLink1" href="#" onclick='dropSelected(this.innerText);return false;'>Graham Airey</a>
+//
+for(var i = 0; i < arrOptions.length; i++) {
+	var el = document.createElement("a");
+	el.id = "myLink" + (i);
+	el.setAttribute("onclick", "dropSelected(this.innerText);return false;");
+	el.setAttribute("href", "#");
+	el.innerText = arrOptions[i];
+	select.appendChild(el);
+	//if(arrOptions[i][1] > 0) {
+		//console.log(arrOptions[i][0] + " " + arrOptions[i][1])
+		//document.getElementById("myLink" + (i)).style.color = "blue";
+		//document.getElementById("myLink" + (i)).style.background = "lightBlue";
+	//}
+}
+
+}
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+//function myFunction() {
+//  document.getElementById("myDropdown").classList.toggle("show");
+ // document.getElementById("myDropdown").style.display = "block";
+//}
+
+// Close the dropdown if the user clicks outside of it
+//window.onclick = function(event) {
+//  if (event.target.matches('#dropdowmcontainer')) {
+//    document.getElementById("dropdowncontainer").style.display = "none";
+//  }
+//}
+
+
+
+
+
+
+
+
+// run by clicking on tee slot
+function selected(id) {
+console.log("selected")
+
+//document.getElementById("myDropdown").classList.add("show");
+//resetDropdownColors()
+// clicked on tee slot
+// show dropdown
+document.getElementById("dropdowncontainer").style.display = "block";
+var temp = document.querySelectorAll(".tee");
+for (var i = 0; i < temp.length; i++) {
+     temp[i].classList.remove("highlightgray");
+}
+document.getElementById(id).classList.add("highlightgray");
+currentteeslotid = id;	
+// get name in current tee slot
+currentteeslotname = document.getElementById(id).innerText;
+// moved to dropSelected(txt)
+//document.getElementById("dropdowncontainer").style.display = "none";
+
+
+
+
+}
+
+
+function dropSelected(txt) {
+	console.log("txt = " + txt)
+	document.getElementById(currentteeslotid).innerText = txt
+	console.log("changed from " + currentteeslotname + " to " + txt);
+	// close dropdown
+	document.getElementById("dropdowncontainer").style.display = "none";
+	// get rid of tee highlights
+	var temp = document.querySelectorAll(".tee");
+for (var i = 0; i < temp.length; i++) {
+     temp[i].classList.remove("highlightgray");
+}
+//document.getElementById(id).classList.remove("highlightgray");
+	
+// fade used dropdown names
+ 
+for (var i = 0; i < temp.length; i++) {
+if (document.getElementById("a" + i).innerText !== "----------") {
+	for (var j = 0; j < arrOptions.length; j++) {
+		if (document.getElementById("myLink" + j).innerText == 
+		    document.getElementById("a" + i).innerText) {
+	console.log(document.getElementById("myLink" + j).innerText + " = " + document.getElementById("a" + i).innerText);			
+			document.getElementById("myLink" + j).classList.add("highlightgray");
+		}
+	}	
+}
+	
+	
+	
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // dropdown
+ function update(a,b){
+	 j=a.options.length
+    for (var i=0; i<j; i++){
+        b.options[i].selected=a.options[i].selected;
+		if (a.options[i].selected) {
+           currentdropdownname = a.options[i].value;
+		   document.getElementById(currentteeslotid).innerText = currentdropdownname;
+           if (a.options[i].text !== "----------") {
+		       b.options[i].text = "in use";
+           }
+		   // hide dropdown
+           document.getElementById("dropdown").style.display = "none";
+		}
+    }
+ }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ </script>
+</body>
+</html>
