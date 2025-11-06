@@ -15,73 +15,6 @@
 	font-size: 4vh;
 }
 
-#dropdowncontainer {
-	display: none;
-	position: fixed;
-	top: 1vh;
-	right: 1vw;
-	height: 90vh;
-	width: 80vw;
-	border: 2px solid black;
-	border-radius: 5px;
-	background: white;
-	overflow: auto;
-}
-
-/* dropdown */
-.xdropbtn {
-  background-color: #3498DB;
-  color: white;
-  padding: 1vh;
-  //font-size: 10vh;
-  border: none;
-  cursor: pointer;
-  width: 80vw;
-}
-
-.dropbtn:hover, .dropbtn:focus {
-  background-color: silver;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-   width: 100%;
-}
-
-.dropdown-content {
-  //display: none;
-  //position: absolute;
-  background-color: white;
-  //min-width: 160px;
- width: 80vw;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 1vh;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown a:hover {background-color: silver;}
-
-.show {display: block;}
-
-
-.mylinks {
-	width: 100%;
-	background: white;
-}
-
-
-
-/* end dropdown */
-
-
 
 .highlightgray {
 background: silver;	
@@ -120,19 +53,6 @@ background: silver;
     background: lightblue;
 }
 
-td {
-    //font-family: arial;
-    //font-size: 7vh;
-	//padding: 1vh;
-}
-
-td:hover {
-    background: lightblue;
-    transition: 0.2s;
-    cursor: pointer;
-}
-
-
 .teegroup {
 	//background: gray;
 	border: 2px solid black;
@@ -147,12 +67,12 @@ rgb(245, 243, 243)
 }
 
 .head {
-	background: gray;
+	background: silver;
 	border: 2px solid black;
 	border-radius: 5px;
 	width: 90%;
 	margin: 1vh;
-	color: white;
+	color: black;
 	padding:1vh;
 }
 
@@ -221,6 +141,7 @@ float: right;
 </style>
 </head>
 <body>
+<!--
 <div id="dropdowncontainer">
 
    <div class="dropdown">
@@ -228,11 +149,13 @@ float: right;
       <img id="imgback" onclick= "closeDropdown()" style="border: 0; height: 20vw; width: 20vw; " src="arrow.png" alt="x">
       </div>
       <div id="myDropdown" class="dropdown-content">
+-->
       <!-- populated by javascript -->
+<!--
 	  </div>
    </div>
 </div>
-
+-->
 
 <div id="teecontainer">
 <!-- populated by javascript -->
@@ -240,6 +163,7 @@ float: right;
 
 
 <!-- message box for restore -->
+<!--
 <div id="msgbox"><p>Previous data exists, restore ?</p>
    <p>
       <a id="answeryes" onclick=restoreTeeData()>
@@ -250,40 +174,32 @@ float: right;
       </a>
    </p>
 </div>
+-->
 <!--
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScEMPkMNDTXFyUKMrfeoywXNDd_In2I5IaxK9_vClpfdi5QJw/viewform?embedded=true" width="640" height="824" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 -->
 
 		<!-- invisible but necessary for submit of data	-->
 		<!-- form to construct data prior to submit -->
+<!--
 		<form action="https://docs.google.com/forms/d/e/1FAIpQLScEMPkMNDTXFyUKMrfeoywXNDd_In2I5IaxK9_vClpfdi5QJw/formResponse" id="my-form" method="post" name="my-form" target="my-response-iframe">
+-->
 			<!-- fullname, neme, hcp, tee -->
+<!--
 			<input id='mx970437057' name='entry.970437057' type='text' value='default'>
 			<input id='mx1993210278' name='entry.1993210278' type='text' value='default'>
 			<input id='mx1205777830' name='entry.1205777830' type='text' value='default'>
 			<input id='mx1657395643' name='entry.1657395643' type='text' value='default'>
 			
 			<input type="submit"> </form>
+-->
 		<!-- google iframe inserted here - invisible -->
+<!--
 		<iframe height="500" id="my-response-iframe" name="my-response-iframe" 
         src="https://docs.google.com/forms/d/e/1FAIpQLScEMPkMNDTXFyUKMrfeoywXNDd_In2I5IaxK9_vClpfdi5QJw/viewform?embedded=true" width="500">
         </iframe>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-->
 
 <script type="text/javascript">
 
@@ -321,18 +237,18 @@ if (!dataStream.ok) {
 var resultsarray = await dataStream.json()
 // split into separate arrays
 arrPlayers = resultsarray.map(d => d.players);
-arrTeeSlots = resultsarray.map(d => d.teeslots);
+//arrTeeSlots = resultsarray.map(d => d.teeslots);
 arrOptions = resultsarray.map(d => d.allplayers);
 // remove null items
 arrPlayers = arrPlayers.filter(function(el) {return el != null;})
-arrTeeSlots = arrTeeSlots.filter(function(el) {return el != null;})
+//arrTeeSlots = arrTeeSlots.filter(function(el) {return el != null;})
 arrOptions = arrOptions.filter(function(el) {return el != null;})
 // remove empty items
 arrPlayers = arrPlayers.filter(function(el) {return el != "";})
-arrTeeSlots = arrTeeSlots.filter(function(el) {return el != "";})
+//arrTeeSlots = arrTeeSlots.filter(function(el) {return el != "";})
 arrOptions = arrOptions.filter(function(el) {return el != "";})               
 console.log(arrPlayers)                
-console.log(arrTeeSlots)
+//console.log(arrTeeSlots)
 console.log(arrOptions)                
 /*                
                 
@@ -432,33 +348,37 @@ var t = 0;
 var teecontainer = document.getElementById("teecontainer")
 for (let j = 0; j < arrOptions.length; j+=4) {
    // create a 4-ball group
-   console.log("j = " + j)
+ 
    t++
    let outerbox = document.createElement("div");
    outerbox.id= "aa" + t;
    outerbox.className = "teegroup";
    
-   //console.log(teecontainer.innerHTML)
+  
  
  
- 
+ // create a tee time
+ dd=new Date(2026,5,28,3,0,0)
+ var tt = ((t*8) - 8)
+ ddd = addMinutes(dd,tt);
+
  
 let heading = document.createElement("div");
 heading.id= "h" + j;
 heading.className = "head";
-heading.innerText = "tee " + t;
+heading.innerText = "tee " + t + " at " + ddd + "pm.";
 teecontainer.appendChild(heading)
 
 
 //console.log(teecontainer.innerHTML)
-
+ //console.log(teecontainer.innerHTML)
   
 // then add 4 players
 let box1 = document.createElement("div");
    box1.id= "a" + j;
    box1.className = "tee";
    //box.style.setProperty("--i", i);  
-   box1.setAttribute( "onclick", "javascript: selected(this.id);" );
+   //box1.setAttribute( "onclick", "javascript: selected(this.id);" );
    box1.innerText = "----------"
    outerbox.appendChild(box1);
 
@@ -466,7 +386,7 @@ let box2 = document.createElement("div");
    box2.id= "a" + (j+1);
    box2.className = "tee";
    //box.style.setProperty("--i", i);  
-   box2.setAttribute( "onclick", "javascript: selected(this.id);" );
+   //box2.setAttribute( "onclick", "javascript: selected(this.id);" );
    box2.innerText = "----------"
    outerbox.appendChild(box2);
 
@@ -474,7 +394,7 @@ let box3 = document.createElement("div");
    box3.id= "a" + (j+2);
    box3.className = "tee";
    //box.style.setProperty("--i", i);  
-   box3.setAttribute( "onclick", "javascript: selected(this.id);" );
+   //box3.setAttribute( "onclick", "javascript: selected(this.id);" );
    box3.innerText = "----------"
    outerbox.appendChild(box3);
 
@@ -482,12 +402,16 @@ let box4 = document.createElement("div");
    box4.id= "a" + (j+3);
    box4.className = "tee";
    //box.style.setProperty("--i", i);  
-   box4.setAttribute( "onclick", "javascript: selected(this.id);" );
+   //box4.setAttribute( "onclick", "javascript: selected(this.id);" );
    box4.innerText = "----------"
    outerbox.appendChild(box4);
 
 teecontainer.appendChild(outerbox);
 
+// console.log(teecontainer.innerHTML)
+
+
+/*
 // create dropdown
 var select = document.getElementById("myDropdown");
 select.innerHTML = "";
@@ -509,24 +433,14 @@ for(var i = 0; i < arrOptions.length; i++) {
 	//}
 }
 console.log(document.getElementById("teecontainer").innerHTML)
-
-
-
-
-
+*/
 
 }
-
 
 // populate tee slots
 for(var i = 0; i < arrOptions.length; i++) {
    document.getElementById("a" + i).innerText = arrPlayers[i];
 }
-
-
-
-
-
 
 
 /* When the user clicks on the button, 
@@ -902,6 +816,9 @@ function addMinutes(date, minutes) {
     var hour = tt.getHours();
     // get the current minute (from 0 to 59)
     var minute = tt.getMinutes();
+	if (minute < 10) {
+		minute = ("0" + minute);
+	}
     // display the current time in the format "HH:MM"
     return(hour + ":" + minute);
 }
