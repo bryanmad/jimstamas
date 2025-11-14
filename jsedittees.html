@@ -836,15 +836,20 @@ https://docs.google.com/forms/d/e/1FAIpQLScEMPkMNDTXFyUKMrfeoywXNDd_In2I5IaxK9_v
 */
 
 
+
 function addMinutes(date, minutes) {
     var tt = new Date(date.getTime() + minutes*60000);
 	// get the current hour (from 0 to 23)
     var hour = tt.getHours();
     // get the current minute (from 0 to 59)
     var minute = tt.getMinutes();
+	if (minute < 10) {
+		minute = ("0" + minute);
+	}
     // display the current time in the format "HH:MM"
     return(hour + ":" + minute);
 }
+
 
 
  </script>
