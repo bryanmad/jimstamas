@@ -8,7 +8,7 @@
     <meta name="theme-color" content="indigo">
     <meta name="robots" content="noindex">
     <link href="originalgolf.svg" rel="icon" type="image/x-icon" />
-    <link rel="apple-touch-icon" sizes="180x180" href="originalgolf.svg.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="originalgolf.svg" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
     <style>
@@ -294,8 +294,6 @@ var arrOptions = [];
 //===========================
 // this code runs at startup
 //===========================
-//change wording to show downloading, change back when complete
-// document.getElementById("dropbtn").innerText = "searching ..."
 getData();
 // need to set up a couple of arrays from the data in google sheets
 // https://docs.google.com/spreadsheets/d/e/2PACX-1vTZXo5wqMAIQ5cdGyb_ZczrereiMQd5wGFIdNbyirolhaSJ8Fex2_-q641jVzV0Srted6EvDMtdfQE3/pub?gid=342576676&single=true&output=csv
@@ -323,72 +321,10 @@ arrOptions = arrOptions.filter(function(el) {return el != "";})
 console.log(arrPlayers)                
 console.log(arrTeeSlots)
 console.log(arrOptions)                
-/*                
-                
-			       dd = new Date();
-			       day = dd.getDay();
-			
-		          // get rid of "old" localStorage but keep dropdown options
-		          for (var i = 0; i < localStorage.length; i++) {        
-                     if (localStorage.key(i).substring(0,2) == "ww") {
-                         if (localStorage.key(i) !== "wwdropdown") {
-                             localStorage.removeItem(localStorage.key(i));
-                         } 
-                     }       
-                }	
+   
+start();
 	
-	             // put correct wording back - signifies download completed
-	             document.getElementById("dropbtn").innerText = "select player"
-	
-	
-	*/	
-	   
-		start();
-	
-
-	}
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-var arrOptions=[];
-arrOptions = [
-"(20) John Airey",
-"(20) Paul Airey",
-"(20) George Airey",
-"(20) Ringo Airey",
-"(20) Bryan Maddison",
-"(16) Dale Aitkenhead",
-"(20) Dean Airey",
-"(20) Johnny Airey",
-"(20) James Airey",
-"(9) Stephen Alldridge",
-"(20) Bob Airey",
-"(20) Peter Airey",
-"(7) Graham Airey",
-"(20) Paul Aitkenhead",
-"(20) Eddie Airey",
-"(20) Trevor Airey",
-"(20) Norman Airey"
-];
-*/
+}
 
 
 function start() {
@@ -430,15 +366,20 @@ for (let j = 0; j < arrOptions.length; j+=4) {
    //console.log(teecontainer.innerHTML)
  
  
- 
+ // create a tee time
+ dd=new Date(2026,5,28,3,0,0)
+ var tt = ((t*8) - 8)
+ ddd = addMinutes(dd,tt);
+
  
 let heading = document.createElement("div");
 heading.id= "h" + j;
 heading.className = "head";
-heading.innerText = "tee " + t;
+heading.innerText = "tee " + t + " at " + ddd + "pm.";
 teecontainer.appendChild(heading)
 
-
+ 
+ 
 //console.log(teecontainer.innerHTML)
 
   
@@ -457,6 +398,7 @@ let box2 = document.createElement("div");
    //box.style.setProperty("--i", i);  
    box2.setAttribute( "onclick", "javascript: selected(this.id);" );
    box2.innerText = "----------"
+   box2.style.background = "WhiteSmoke";
    outerbox.appendChild(box2);
 
 let box3 = document.createElement("div");
@@ -473,6 +415,7 @@ let box4 = document.createElement("div");
    //box.style.setProperty("--i", i);  
    box4.setAttribute( "onclick", "javascript: selected(this.id);" );
    box4.innerText = "----------"
+   box4.style.background = "WhiteSmoke";
    outerbox.appendChild(box4);
 
 teecontainer.appendChild(outerbox);

@@ -9,7 +9,7 @@
     <meta name="theme-color" content="indigo">
     <meta name="robots" content="noindex">
     <link href="originalgolf.svg" rel="icon" type="image/x-icon" />
-    <link rel="apple-touch-icon" sizes="180x180" href="originalgolf.svg.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="originalgolf.svg" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
     <style>
@@ -445,29 +445,6 @@ teecontainer.appendChild(outerbox);
 // console.log(teecontainer.innerHTML)
 
 
-/*
-// create dropdown
-var select = document.getElementById("myDropdown");
-select.innerHTML = "";
-// this is what is created
-//<a id="myLink1" href="#" onclick='dropSelected(this.innerText);return false;'>Graham Airey</a>
-//
-for(var i = 0; i < arrOptions.length; i++) {
-	var el = document.createElement("a");
-	el.id = "myLink" + (i);
-	el.setAttribute("onclick", "dropSelected(this.innerText);return false;");
-	el.setAttribute("href", "#");
-	el.setAttribute("class", "mylinks");
-	el.innerText = arrOptions[i];
-	select.appendChild(el);
-	//if(arrOptions[i][1] > 0) {
-		//console.log(arrOptions[i][0] + " " + arrOptions[i][1])
-		//document.getElementById("myLink" + (i)).style.color = "blue";
-		//document.getElementById("myLink" + (i)).style.background = "lightBlue";
-	//}
-}
-console.log(document.getElementById("teecontainer").innerHTML)
-*/
 
 }
 
@@ -477,19 +454,11 @@ for(var i = 0; i < arrOptions.length; i++) {
 }
 
 
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-//function myFunction() {
-//  document.getElementById("myDropdown").classList.toggle("show");
- // document.getElementById("myDropdown").style.display = "block";
-//}
 
-// Close the dropdown if the user clicks outside of it
-//window.onclick = function(event) {
-//  if (event.target.matches('#dropdowmcontainer')) {
-//    document.getElementById("dropdowncontainer").style.display = "none";
-//  }
-//}
+
+
+
+
 } // end of start()
 
 
@@ -515,11 +484,6 @@ document.getElementById(id).classList.add("highlightgray");
 currentteeslotid = id;	
 // get name in current tee slot
 currentteeslotname = document.getElementById(id).innerText;
-// moved to dropSelected(txt)
-//document.getElementById("dropdowncontainer").style.display = "none";
-
-
-
 
 }
 
@@ -560,22 +524,6 @@ saveTeeData(toBeSaved, teeslot);
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  // dropdown
  function update(a,b){
 	 j=a.options.length
@@ -599,89 +547,6 @@ function closeDropdown() {
            document.getElementById("dropdowncontainer").style.display = "none";
 		   //saveTeeData()
 }
-
-
-
-
-
-
- 
-function xsaveTeeData() {
-	var tempDropdownNamesarray = [];
-	var tempDropdownUsedarray = [];
-	var tempTeeNamesarray = [];
-	var teeops = document.querySelectorAll(".mylinks");
-	console.log("teeops length = " + teeops.length)
-	for(var i = 0; i < arrOptions.length; i++) {
-		console.log("count " + i + " " + document.getElementById("myLink" + i).classList.contains("highlightgray"))
-		// array of names
-		tempDropdownNamesarray.push(document.getElementById("myLink" + i).innerText);
-		// array of states for now
-		if (document.getElementById("myLink" + i).classList.contains("highlightgray")) {
-		   tempDropdownUsedarray.push(document.getElementById("myLink" + i).innerText);
-		}
-		tempTeeNamesarray.push(document.getElementById("a" + i).innerText);
-		localStorage.setItem("names", JSON.stringify(tempDropdownNamesarray));
-		localStorage.setItem("used", JSON.stringify(tempDropdownUsedarray));
-		localStorage.setItem("teenames", JSON.stringify(tempTeeNamesarray));
-	}	
-	document.getElementById("msgbox").style.display = "none";
-	console.log(tempDropdownNamesarray)
-	console.log(tempDropdownUsedarray)
-	console.log(tempTeeNamesarray)
-}
-
-function xrestoreTeeData() {
-	var tempDropdownNamesarray = [];
-	var tempDropdownUsedarray = [];
-	var tempTeeNamesarray = [];
-	tempDropdownNamesarray =  JSON.parse(localStorage.getItem("names"));
-	tempDropdownUsedarray =  JSON.parse(localStorage.getItem("used"));
-	tempTeeNamesarray =  JSON.parse(localStorage.getItem("teenames"));
-	//console.log(tempnamesarray);
-	for (let i = 0; i < arrOptions.length; i++) {
-		console.log("count = " + i)
-		document.getElementById("myLink" + i).innerText = tempDropdownNamesarray[i];
-	    if (tempDropdownUsedarray.includes(tempDropdownNamesarray[i])) {
-		   document.getElementById("myLink" + i).classList.add("highlightgray");
-		}
-		document.getElementById("a" + i).innerText = tempTeeNamesarray[i];
-		//document.getElementById("used" + i).innerText = tempusedarray[i];
-		// tidy up any cyan color left over
-		//document.getElementById("name" + i).style.background = "white";
-	}
-	//document.getElementById("msgbox").style.display = "none";
-	/*
-	var ops = document.querySelectorAll(".container td");
-	for (let i = 0; i < ops.length; i++) {
-		// array of names
-		tempnamesarray.push(document.getElementById("name" + i).innerText);
-		// array of hcps - states for now
-		tempusedarray.push(document.getElementById("used" + i).innerText);
-		
-		console.log(tempnamesarray)
-		console.log(tempusedarray)
-		
-		localStorage.setItem("names", JSON.stringify(tempnamesarray));
-		localStorage.setItem("used", JSON.stringify(tempusedarray));
-*/
-
-document.getElementById("msgbox").style.display = "none";
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
  
 function saveTeeData(playerx, teeslotx) {
@@ -755,26 +620,10 @@ function restoreTeeData() {
 		// tidy up any cyan color left over
 		//document.getElementById("name" + i).style.background = "white";
 	}
-	//document.getElementById("msgbox").style.display = "none";
-	/*
-	var ops = document.querySelectorAll(".container td");
-	for (let i = 0; i < ops.length; i++) {
-		// array of names
-		tempnamesarray.push(document.getElementById("name" + i).innerText);
-		// array of hcps - states for now
-		tempusedarray.push(document.getElementById("used" + i).innerText);
-		
-		console.log(tempnamesarray)
-		console.log(tempusedarray)
-		
-		localStorage.setItem("names", JSON.stringify(tempnamesarray));
-		localStorage.setItem("used", JSON.stringify(tempusedarray));
-*/
+
 
 document.getElementById("msgbox").style.display = "none";
 }
-
-	
 
 
 
@@ -856,29 +705,6 @@ function addMinutes(date, minutes) {
     // display the current time in the format "HH:MM"
     return(hour + ":" + minute);
 }
-
-/*
- // create a new Date object
-let now = new Date();
-
-// get the current hour (from 0 to 23)
-let hour = now.getHours();
-
-// get the current minute (from 0 to 59)
-let minute = now.getMinutes();
-
-// display the current time in the format "HH:MM"
-console.log(hour + ":" + minute);
-*/
-
-
-
-
-
-
-
-
-
 
 
  </script>
