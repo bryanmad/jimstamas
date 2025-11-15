@@ -32,7 +32,7 @@
 .container {
     position: relative;
 	height: 87vh;
-	margin-top: 10vh;
+	//margin-top: 10vh;
 }
  
  
@@ -172,13 +172,25 @@
   100% { opacity: 1; }
 }
 
-
+#title {
+	//width: 80px;
+    height: 10vh;
+    display: flex;
+    //justify-content: center;
+    align-items: left; //center;
+    //color: white;
+    font-size: 8vw;
+	border-radius: 10px;
+	border: 4px solid rgba(255, 255, 255, 0.3);
+	background-clip: padding-box;
+	
+}
 
 </style>
 </head>
 <body>
   <div id="warning">Not available in landscape orientation</div>
-
+<div id="title">Stableford leaderboard</div>
   <div id="container" class="container">
  <div id="imgbackcontainer" class="imgbackcontainer" onclick= "clearBlue()">
   <img id="imgback" style="border: 0; height: 20vw; width: 20vw;" src="arrow.png" alt="x0">
