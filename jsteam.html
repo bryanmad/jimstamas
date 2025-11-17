@@ -89,7 +89,7 @@
     box-shadow: 0 3px 5px black;
     left: 50%;
     transform: translateX(-50%);
-    top: calc(var(--i) * 2.1 * (var(--team-height) + var(--team-spacing)) + 1vh); /* added top space of 1vh */
+    top: calc(var(--i) * 2.5 * (var(--team-height) + var(--team-spacing)) + 1vh); /* added top space of 1vh */
     display: flex;
     align-items: center;
     transition-property: top;
@@ -98,8 +98,9 @@
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 	border: 4px solid rgba(255, 255, 255, 0.3);
 	background-clip: padding-box;
-	
-	//display: block;
+	padding-top: 1vh;
+	padding-bottom: 1vh;
+	display: none;
 	
 }
 
@@ -134,8 +135,8 @@
 	text-align: center;
 	justify-content: center;
 }
-
-.team i {
+/*
+.xteam i {
     width: 80px;
     height: var(--team-height);
     display: flex;
@@ -147,6 +148,7 @@
 	border: 4px solid rgba(255, 255, 255, 0.3);
 	background-clip: padding-box;
 }
+*/
 #warning {
       display: none;
       position: absolute;
@@ -200,7 +202,7 @@
 	border: 4px solid rgba(255, 255, 255, 0.3);
 	background-clip: padding-box;
 	color: white;
-	font-size: 8vw;
+	font-size: 7vw;
 	//display: block;
 	
 	
@@ -405,7 +407,11 @@ let elementScore = element.querySelector(".score");
 
 if (elementName.innerText.slice(0,12) == elName.slice(0,12) && elementName.innerText.slice(-12) == elName.slice(-12)) {
 	console.log("FOUND FOUND FOUND")
+// faded, so enter score and show
+// appears one by one
 elementScore.innerText = scr;
+element.style.display = "flex";
+
 }
 })	
 }  
