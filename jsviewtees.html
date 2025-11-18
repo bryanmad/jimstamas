@@ -100,8 +100,8 @@
 <body>
 
 
-  <div class="imgbackcontainer">
-  <img id="imgback" onclick= "clearblue()" style="border: 0; height: 25vw; width: 25vw; " src="arrow.png" alt="x0">
+  <div class="imgbackcontainer" onclick="goBack()" >
+  <img id="imgback" style="border: 0; height: 25vw; width: 25vw; " src="arrow.png" alt="x0">
   </div>
   <div id="teecontainer">
   <!-- populated by javascript -->
@@ -253,7 +253,10 @@ function addMinutes(date, minutes) {
     return(hour + ":" + minute);
 }
 
-
+function goBack() {
+	console.log("go back")
+	 location.href = "jsfront.html";
+}
  </script>
 </body>
 </html>
