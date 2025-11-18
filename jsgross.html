@@ -194,7 +194,7 @@
 	border: 4px solid rgba(255, 255, 255, 0.3);
 	background-clip: padding-box;
 	color: white;
-	font-size: 8vw;
+	font-size: 7vw;
 	//display: block;
 	
 	
@@ -217,7 +217,7 @@
   </div>
   <div class="spacer2vh"></div>
   <div id="container" class="container">
-     <div id="imgbackcontainer" class="imgbackcontainer" onclick= "clearBlue()">
+     <div id="imgbackcontainer" class="imgbackcontainer" onclick= "goBack()">
         <img id="imgback" style="border: 0; height: 20vw; width: 20vw;" src="arrow.png" alt="x">
      </div>
      <div id="menu1" onclick="activateMenu(this.id)"></div>
@@ -366,6 +366,13 @@ function initialBodyUpdate(nom,pos) {
 document.getElementById("name" + pos).innerText = nom;
 document.getElementById("position" + pos).innerText = "";
 }	
+
+
+function goBack() {
+	console.log("go back")
+	 location.href = "jsfront.html";
+}
+
 
 </script>
 </body>

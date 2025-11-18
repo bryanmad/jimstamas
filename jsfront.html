@@ -293,22 +293,22 @@ left: 0;
   <div class="subtxt2">28th July 2026</div>
   
   
-     <div class="img1a" onclick="showblue()">
+     <div class="img1a" onclick="showTeeTimes()">
         <img id="img1" style="border: 0; height: 15vw; width: 15vw; " src="teetimes.png" alt="">
 		<br>tee<br>times
 		<div id="spacer"></div>
      </div>
-	 <div class="img1a" onclick="showred()">
+	 <div class="img1a" onclick="showTeamResults()">
         <img id="img3" style="border: 0; height: 15vw; width: 15vw; " src="teamresults.png" alt="">
 		<br>team<br>results
 		<div id="spacer"></div>
      </div> 
-     <div class="img1a" onclick="showgreen()">
+     <div class="img1a" onclick="showIndividualGross()">
         <img id="img4" style="border: 0; height: 15vw; width: 15vw; " src="gross.png" alt="">
 		<br>individual<br>stableford
 		<div id="spacer"></div>
      </div>
-     <div class="img1a" onclick="showindigo()">
+     <div class="img1a" onclick="showIndividualPoints()">
         <img id="img5" style="border: 0; height: 15vw; width: 15vw; " src="points.png" alt="">
 		<br>individual<br>points
 		<div id="spacer"></div>
@@ -341,42 +341,22 @@ left: 0;
       }
     }, false);
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- function showblue() {
+  
+ function showTeeTimes() {
 	 location.href = "jsviewtees.html";
  }
  
- 
- 
- function hideIcons() {
-	 
-	 document.getElementById("icons").style.display = "none";
+ function showTeamResults() {
+	 location.href = "jsteam.html";
  }
  
+ function showIndividualGross() {
+	 location.href = "jsgross.html";
+ }
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+ function showIndividualPoints() {
+	 location.href = "jspoints.html";
+ }
  
  </script>
  
