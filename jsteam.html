@@ -299,7 +299,7 @@ try {
 //console.log(data)
 data = data.filter(function(el) {return el.name != "\n\n\n";})
 
-console.log(data)
+//console.log(data)
 
 
      useData();
@@ -313,64 +313,29 @@ container.innerHTML = "";
 data.forEach((e, i) => (e.rank = i));
 // build screen
 data.forEach((el, i) => {
-let box = document.createElement("div");
-box.id= "box" + i;
-box.className = "team";
-box.style.setProperty("--i", i);  
-let name = document.createElement("span");
-name.id = "name" + i
-name.className = "name";
-let score = document.createElement("span");
-score.id = "score" + i
-score.className = "score";  
-let position = document.createElement("span");
-position.id = "position" + i
-position.className = "position";
-position.innerHTML = el.position;
-box.appendChild(position);
-box.appendChild(name);
-box.appendChild(score);
-box.style.setProperty("--color", el.color);
-container.appendChild(box);
-// fade the initial view
-
-
-
-
-
-
-
-
-
-
-// put this back
-
-//box.style.opacity = 0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   let box = document.createElement("div");
+   box.id= "box" + i;
+   box.className = "team";
+   box.style.setProperty("--i", i);  
+   let name = document.createElement("span");
+   name.id = "name" + i
+   name.className = "name";
+   let score = document.createElement("span");
+   score.id = "score" + i
+   let position = document.createElement("span");
+   position.id = "position" + i
+   position.className = "position";
+   position.innerHTML = el.position;
+   box.appendChild(position);
+   box.appendChild(name);
+   box.appendChild(score);
+   box.style.setProperty("--color", el.color);
+   container.appendChild(box);
 })
 j=0
 
 data.forEach((elstartx,j) => {	
-	console.log(elstartx)
+	//console.log(elstartx)
 	initialBodyUpdate(elstartx.name,j);
 })
 k=0;
@@ -380,6 +345,7 @@ data.forEach((el) => {
 	k++
 	setTimeout(function() {
 		if (el.name !== "") {
+            //console.log("el.name = " + el.name)
 	bodyUpdate(el.name,el.score);
 		}
    },k*300);
@@ -389,7 +355,7 @@ data.forEach((el) => {
 
 
 function bodyUpdate(nom,scr) {	 
-console.log("scr = " + scr)
+//console.log("scr = " + scr)
 let elName = nom;
 data.find((team) => team.name === elName);
 // now sort out positions for same scores
@@ -406,19 +372,22 @@ data.forEach((elem, ind) => {
 });  
 let AllTeams = Array.from(document.querySelectorAll(".team"));
 var k=0
-AllTeams.forEach((element) => {
-let elementName = element.querySelector(".name");
-let elementScore = element.querySelector(".score");
+AllTeams.forEach((elx,j) => {
+   //let elementName = element.querySelector(".name");
+   //let elementScore = element.querySelector(".score");
+//console.log("=====" + document.getElementById("name" + j).innerText)
+let elementName = document.getElementById("name" + j).innerText
+let elementScore = document.getElementById("score" + j).innerText
 
-if (elementName.innerText.slice(0,12) == elName.slice(0,12) && elementName.innerText.slice(-12) == elName.slice(-12)) {
-	console.log("FOUND FOUND FOUND")
-// faded, so enter score and show
-// appears one by one
-elementScore.innerText = scr;
-element.style.display = "flex";
-
-}
-})	
+   if (elementName.slice(0,10) == elName.slice(0,10) && elementName.slice(-10) == elName.slice(-10)) {
+	  //console.log("FOUND FOUND FOUND " + elementScore)
+      // faded, so enter score and show
+      // appears one by one
+      elementScore = scr;
+      elx.style.display = "flex";
+   }
+})
+	
 }  
 
 function initialBodyUpdate(nom,pos) {
