@@ -379,9 +379,8 @@ AllTeams.forEach((elx,j) => {
 let elementName = document.getElementById("name" + j).innerText
 let elementScore = document.getElementById("score" + j).innerText
 
-   if (elementName.slice(0,10) == elName.slice(0,10) && elementName.slice(-10) == elName.slice(-10)) {
-	  //console.log("FOUND FOUND FOUND " + elementScore)
-      // faded, so enter score and show
+// replace the different chars then compare
+   if (elementName == elName.replaceAll("\n","")) {
       // appears one by one
       elementScore = scr;
       elx.style.display = "flex";
