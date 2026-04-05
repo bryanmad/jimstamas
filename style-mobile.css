@@ -1,37 +1,36 @@
-/*@media only screen and (max-width: 600px)
-  {
+@media only screen and (max-width: 600px) {
+    #scroller {
+        height: 20vh;
+        border: none;
+        background-color: #00000010;
+        border-radius: 50px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-snap-stop: always;
+    }
 
-#scroller {		height: 20vh;
-				border: none;
-				background-color: #00000010;
-				border-radius: 50px;
-				overflow-x: auto;
-  				overflow-y: hidden;
-  				scroll-snap-type: x mandatory;
-        		scroll-snap-stop: always;
- 			 	 }
+    .numberInScroller {
+        text-align: center;
+        font-size: 26px;
+        line-height: 22px;
+        height: 15vh;
+        margin: 0px;
+        padding-top: 10px;
+        scroll-snap-align: center;
+    }
 
-.numberInScroller { text-align: center;
-						font-size: 26px;
-						line-height: 22px;
-						height: 15vh;
-						margin: 0px;
-						padding-top: 10px;
-						scroll-snap-align: center;
-						 }
-
-#selectedValueIndicator { height: 25vh;
-						border-radius: 30px;
-						background-color: transparent;
-						border: solid;
-						border-width: 1px;
-						border-color: #00000050;
-						z-index: +1;
-						position: relative;
-						margin-top: -40px;
-						pointer-events: none;
-						box-shadow: inset 0 0 10px #00000050;
-					}
-
-
-  }*/
+    #selectedValueIndicator {
+        height: 25vh;
+        border-radius: 30px;
+        background-color: transparent;
+        border: solid;
+        border-width: 1px;
+        border-color: #00000050;
+        z-index: +1;
+        position: relative;
+        margin-top: -40px;
+        pointer-events: none;
+        box-shadow: inset 0 0 10px #00000050;
+    }
+}
