@@ -74,7 +74,7 @@ button:hover {
     pointer-events: none;
     box-shadow: inset 0 0 10px #00000050;
 }
-
+/*
 @media only screen and (max-width: 600px) {
     #scroller {
         height: 20vh;
@@ -110,4 +110,5 @@ button:hover {
         pointer-events: none;
         box-shadow: inset 0 0 10px #00000050;
     }
+*/
 }
