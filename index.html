@@ -125,9 +125,6 @@
             selectedValueIndicator.style.width = "" + widthOfOneColumn + "px";
             selectedValueIndicator.style.marginLeft =
                 "" + widthOfOneColumn + "px";
-
-            selectedValueIndicator.style.color = "blue";
-
             // Fill value to the scrolling list.
             var z = startNumber;
             while (z < endNumber + stepValue + 1) {
@@ -148,7 +145,8 @@
                 const finalValue =
                     (scroller.scrollLeft / widthOfOneColumn) * stepValue +
                     startNumber;
-                printvalue.innerHTML = "" + finalValue + "";
+                printvalue.innerHTML =
+                    '<span style="color:blue;">' + finalValue + "</span>";
                 console.log(finalValue);
             }
         </script>
