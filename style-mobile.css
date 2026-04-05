@@ -1,7 +1,7 @@
 /*@media only screen and (max-width: 600px)
   {
 
-#scroller {		height: 120px;
+#scroller {		height: 20vh;
 				border: none;
 				background-color: #00000010;
 				border-radius: 50px;
@@ -14,13 +14,13 @@
 .numberInScroller { text-align: center;
 						font-size: 26px;
 						line-height: 22px;
-						height: 30px;
+						height: 15vh;
 						margin: 0px;
 						padding-top: 10px;
 						scroll-snap-align: center;
 						 }
 
-#selectedValueIndicator { height: 80px;
+#selectedValueIndicator { height: 25vh;
 						border-radius: 30px;
 						background-color: transparent;
 						border: solid;
