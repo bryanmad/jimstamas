@@ -60,11 +60,10 @@
                 padding-top: 10px;
                 scroll-snap-align: center;
                 font-size: 8vh;
-                color: blue;
+                //color: blue;
             }
             #selectedValueIndicator {
                 height: 12vh;
-                color: blue;
                 border-radius: 10vh;
                 background-color: transparent;
                 border: solid;
@@ -94,7 +93,7 @@
             <div id="scroller-block"></div>
         </div>
 
-        <div id="selectedValueIndicator"></div>
+        <div id="selectedValueIndicator" onclick="getScrollLeft()"></div>
 
         <button onclick="getScrollLeft()">Get Value</button>
 
