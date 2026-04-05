@@ -77,6 +77,10 @@
                 pointer-events: none;
                 box-shadow: inset 0 0 10px #00000050;
             }
+
+            #scrollValue {
+                color: blue;
+            }
         </style>
     </head>
     <body>
@@ -140,12 +144,6 @@
             }
             // Capture and printing the value at the centre.
             const printvalue = document.getElementById("scrollValue");
-            alert(
-                "turn " +
-                    document.getElementById("scrollValue").innerText +
-                    " blue",
-            );
-            document.getElementById("scrollValue").style.color = "blue";
 
             function getScrollLeft() {
                 const finalValue =
