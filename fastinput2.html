@@ -580,11 +580,13 @@
                 console.log(finalValue);
 
                 if (id == "player1" || id == "points1") {
-                    document.getElementById("points1").innerText = finalValue;
+                    document.getElementById("points1").innerText =
+                        Math.round(finalValue);
                 }
 
                 if (id == "birdies" || id == "birdies1") {
-                    document.getElementById("birdies1").innerText = finalValue;
+                    document.getElementById("birdies1").innerText =
+                        Math.round(finalValue);
                 }
             }
         </script>
@@ -790,7 +792,7 @@
                         openDropdown.classList.remove("show");
                     }
                 }
-                document.getElementById("dropbtn").innerText = player1 + "👤";
+                document.getElementById("dropbtn").innerText = "👤  "player1;
 
                 // set up first entry
                 usethis("points1");
