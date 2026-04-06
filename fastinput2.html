@@ -382,7 +382,8 @@
 
                        .sliderbox {
                            border: 3px solid gray;
-                           padding-left: 15vw;
+                           padding-left: 16vw;
+                           padding-top:10vh;
                        }
         </style>
     </head>
@@ -414,15 +415,26 @@
                                 colspan="3"
                                 rowspan="3"
                                 id="player1"
+                                onclick="getScrollLeft(this.id)"
+
+                            >score
+                                <!--
                                 onclick="usethis(this.id)"
-                            >
-                                none
-                            </td>
+                                --></td>
+
+
+
                             <td
                                 colspan="2"
                                 id="points1"
+
+                                onclick="getScrollLeft(this.id)"
+
+
+                                <!--
                                 onclick="usethis(this.id)"
-                            >
+                                --></td>
+
                                 0
                             </td>
                         </tr>
@@ -431,19 +443,23 @@
                                 colspan="2"
                                 id="birdies"
                                 class="head"
+                                onclick="getScrollLeft(this.id)"
+
+                            >birdies
+                                <!--
                                 onclick="usethis(this.id)"
-                            >
-                                birdies
-                            </td>
+                                --></td>
                         </tr>
                         <tr>
                             <td
                                 colspan="2"
                                 id="birdies1"
+                                onclick="getScrollLeft(this.id)"
+
+
+                                <!--
                                 onclick="usethis(this.id)"
-                            >
-                                0
-                            </td>
+                                -->0</td>
                         </tr>
                     </tbody>
                 </table>
@@ -571,12 +587,23 @@
             // Capture and printing the value at the centre.
             const printvalue = document.getElementById("scrollValue");
 
-            function getScrollLeft() {
+            function getScrollLeft(id) {
                 const finalValue =
                     (scroller.scrollLeft / widthOfOneColumn) * stepValue +
                     startNumber;
                 printvalue.innerHTML = "" + finalValue + "";
                 console.log(finalValue);
+
+if (id == "player1" || id == "points1") {
+       document.getElementById("points1").innerText = finalValue;
+}
+
+if (id == "birdies" || id == "birdies1") {
+       document.getElementById("birdies1").innerText = finalValue;
+}
+
+
+
             }
         </script>
 
@@ -610,54 +637,6 @@
             var compday = arrDays[dd.getDay()];
             console.log("compday = " + compday);
 
-            // 10's
-            function rangeSlide1(value) {
-                console.log("sourceID = " + sourceID);
-                currenttens = value;
-                document.getElementById(sourceID).innerHTML =
-                    parseInt(currenttens) + parseInt(currentones);
-            }
-
-            // units
-            function rangeSlide2(value) {
-                console.log("sourceID = " + sourceID);
-                currentones = value;
-                document.getElementById(sourceID).innerHTML =
-                    parseInt(currenttens) + parseInt(currentones);
-            }
-
-            // code for input areas: score, points etc.
-            function usethis(id) {
-                console.log("in usethis ");
-                console.log("usethis " + id);
-                // clear all
-                document.getElementById("points1").style.background = "";
-                document.getElementById("birdies1").style.background = "";
-                // cope with selecting player instead of points
-                id = id.replace("player", "points");
-                console.log("new id = " + id);
-                sourceID = id;
-                targetID = document.getElementById(id);
-                targetID.style.background = "dodgerBlue";
-                console.log(id);
-                // if birdies only show one range
-                // else show both
-                if (id == "birdies1") {
-                    currentones = 0;
-                    currenttens = 0;
-                    document.getElementById("range1").value = 0;
-                    document.getElementById("range2").value = 0;
-                    document.getElementById("range1").style.visibility =
-                        "hidden";
-                } else {
-                    currentones = 0;
-                    currenttens = 0;
-                    document.getElementById("range1").value = 0;
-                    document.getElementById("range2").value = 0;
-                    document.getElementById("range1").style.visibility =
-                        "visible";
-                }
-            }
 
             // declare global variables
 
@@ -810,8 +789,7 @@
             //=============================================================
             // name selected, do stuff
             function dropSelected(playerName) {
-                document.getElementById("points1").style.background =
-                    "dodgerBlue";
+
                 // reset scores etc.
                 document.getElementById("points1").innerText = "0";
 
