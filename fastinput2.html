@@ -416,25 +416,14 @@
                                 rowspan="3"
                                 id="player1"
                                 onclick="getScrollLeft(this.id)"
-
-                            >score
-                                <!--
-                                onclick="usethis(this.id)"
-                                --></td>
-
-
-
+                            >
+                                score
+                            </td>
                             <td
                                 colspan="2"
                                 id="points1"
-
                                 onclick="getScrollLeft(this.id)"
-
-
-                                <!--
-                                onclick="usethis(this.id)"
-                                --></td>
-
+                            >
                                 0
                             </td>
                         </tr>
@@ -444,22 +433,18 @@
                                 id="birdies"
                                 class="head"
                                 onclick="getScrollLeft(this.id)"
-
-                            >birdies
-                                <!--
-                                onclick="usethis(this.id)"
-                                --></td>
+                            >
+                                birdies
+                            </td>
                         </tr>
                         <tr>
                             <td
                                 colspan="2"
                                 id="birdies1"
                                 onclick="getScrollLeft(this.id)"
-
-
-                                <!--
-                                onclick="usethis(this.id)"
-                                -->0</td>
+                            >
+                                0
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -594,16 +579,13 @@
                 printvalue.innerHTML = "" + finalValue + "";
                 console.log(finalValue);
 
-if (id == "player1" || id == "points1") {
-       document.getElementById("points1").innerText = finalValue;
-}
+                if (id == "player1" || id == "points1") {
+                    document.getElementById("points1").innerText = finalValue;
+                }
 
-if (id == "birdies" || id == "birdies1") {
-       document.getElementById("birdies1").innerText = finalValue;
-}
-
-
-
+                if (id == "birdies" || id == "birdies1") {
+                    document.getElementById("birdies1").innerText = finalValue;
+                }
             }
         </script>
 
@@ -636,7 +618,6 @@ if (id == "birdies" || id == "birdies1") {
             var dd = new Date();
             var compday = arrDays[dd.getDay()];
             console.log("compday = " + compday);
-
 
             // declare global variables
 
@@ -789,13 +770,13 @@ if (id == "birdies" || id == "birdies1") {
             //=============================================================
             // name selected, do stuff
             function dropSelected(playerName) {
-
                 // reset scores etc.
                 document.getElementById("points1").innerText = "0";
                 document.getElementById("birdies1").innerText = "0";
                 var player1 = playerName;
 
-                document.getElementById("player1").innerText = player1 + " hcp " + hcp;
+                document.getElementById("player1").innerText =
+                    player1 + " hcp " + hcp;
 
                 // global player
                 player = playerName;
