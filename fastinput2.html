@@ -105,7 +105,7 @@
                  scroll-snap-stop: always;
              }
              #scroller::-webkit-scrollbar {
-                 display: none;
+                 //display: none;
              }
              #scroller-block {
                  overflow: visible;
@@ -431,7 +431,7 @@
                                 id="player1"
                                 onclick="getScrollLeft(this.id)"
                             >
-                                score
+                                ?
                             </td>
                             <td
                                 colspan="2"
@@ -576,6 +576,9 @@
             while (z < endNumber + stepValue + 1) {
                 const listItem = document.createElement("p");
                 listItem.className = "numberInScroller";
+                // addition - BM =======
+                listItem.id = "num" + z;
+                //======================
                 listItem.style.width = "" + widthOfOneColumn + "px";
                 listItem.innerHTML = "" + z + "";
                 if (z > endNumber) {
@@ -810,7 +813,7 @@
                 document.getElementById("dropbtn").innerText = "👤  " + player1;
 
                 // set up first entry
-                usethis("points1");
+                //usethis("points1");
             }
 
             //=============================================================
